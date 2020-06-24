@@ -5,7 +5,6 @@ import pyautogui
 root = Tk()
 root.title('FACC Bot 69')
 root.configure(background='gray27')
-root.iconbitmap('c:/Users/cresr/Downloads/typing.ico')
 
 # Entry screens
 entry_screen_label = Label(root, text="Message")
