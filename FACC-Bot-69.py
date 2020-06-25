@@ -5,6 +5,7 @@ import pyautogui
 root = Tk()
 root.title('FACC Bot 69')
 root.configure(background='gray27')
+root.iconbitmap('c:/Users/cresr/PycharmProjects/FACC Bot 69/typing.ico')
 
 # Entry screens
 entry_screen_label = Label(root, text="Message")
@@ -16,7 +17,12 @@ entry_screen.grid(row=0, column=1, columnspan=6, padx=10, pady=10)
 entry_screen2_label = Label(root, text="# of Repeats")
 entry_screen2_label.grid(row=1, column=0)
 entry_screen2 = Entry(root, width=35, bd=5)
-entry_screen2.grid(row=1, column=1, columnspan=6, padx=10)
+entry_screen2.grid(row=1, column=1, columnspan=6, padx=10, pady=10)
+
+entry_screen3_label = Label(root, text="Delay")
+entry_screen3_label.grid(row=2, column=0)
+entry_screen3 = Entry(root, width=35, bd=5)
+entry_screen3.grid(row=2, column=1, columnspan=6, padx=10, pady=10)
 
 # what is the text being executed
 def string_value(string):
@@ -32,18 +38,24 @@ def number_value(number):
 
 # mode1: 1 group send
 def new_value():
+    delay = entry_screen3.get()
+    delay = int(delay)
     string_val = entry_screen.get()
     repeats = entry_screen2.get()
     repeats = int(repeats)
     x = 0
     pyautogui.hotkey('alt', 'tab')
     pyautogui.write(string_val)
+    pyautogui.PAUSE = delay
+    pyautogui.FAILSAFE = True
     while repeats > x:
         pyautogui.write(string_val)
         pyautogui.press('enter')
         x += 1
 # mode2: individual word send
 def new_value2():
+    delay = entry_screen3.get()
+    delay = int(delay)
     string_val = entry_screen.get()
     repeats = entry_screen2.get()
     repeats = int(repeats)
@@ -51,6 +63,8 @@ def new_value2():
     x = 0
     pyautogui.hotkey('alt', 'tab')
     pyautogui.write(lst_string_val[0])
+    pyautogui.PAUSE = delay
+    pyautogui.FAILSAFE = True
     while repeats > x:
         for word in range(len(lst_string_val)):
             pyautogui.write(lst_string_val[word])
@@ -58,6 +72,8 @@ def new_value2():
         x += 1
 #mode3: individual letter send
 def new_value3():
+    delay = entry_screen3.get()
+    delay = int(delay)
     string_val = entry_screen.get()
     repeats = entry_screen2.get()
     repeats = int(repeats)
@@ -65,6 +81,8 @@ def new_value3():
     x = 0
     pyautogui.hotkey('alt', 'tab')
     pyautogui.write(lst_string_val[0])
+    pyautogui.PAUSE = delay
+    pyautogui.FAILSAFE = True
     while repeats > x:
         for word in range(len(lst_string_val)):
             pyautogui.write(lst_string_val[word])
@@ -73,10 +91,10 @@ def new_value3():
 
 # modes
 mode1 = Button(root, text="Mode 1", padx=40, pady=20, command=new_value)
-mode1.grid(row=2, column=0, columnspan=2)
+mode1.grid(row=3, column=0, columnspan=2)
 mode2 = Button(root, text="Mode 2", padx=40, pady=20, command=new_value2)
-mode2.grid(row=2, column=3, columnspan=2)
+mode2.grid(row=3, column=3, columnspan=2)
 mode3 = Button(root, text="Mode 3", padx=40, pady=20, command=new_value3)
-mode3.grid(row=2, column=6, columnspan=2)
+mode3.grid(row=3, column=6, columnspan=2)
 
 root.mainloop()
