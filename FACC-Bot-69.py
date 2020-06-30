@@ -18,32 +18,23 @@ entry_screen2_label.grid(row=1, column=0)
 entry_screen2 = Entry(root, width=35, bd=5)
 entry_screen2.grid(row=1, column=1, columnspan=6, padx=10, pady=10)
 
-entry_screen3_label = Label(root, text="Delay")
-entry_screen3_label.grid(row=2, column=0)
-entry_screen3 = Entry(root, width=35, bd=5)
-entry_screen3.grid(row=2, column=1, columnspan=6, padx=10, pady=10)
-
 # what is the text being executed
 def string_value(string):
     current1 = entry_screen.get()
-    entry_screen.delete(0, END)
     entry_screen.insert(0, str(current1) + str(string))
 
 # how many times is the program going to run
 def number_value(number):
     current = entry_screen2.get()
-    entry_screen2.delete(0, END)
     entry_screen2.insert(0, str(current) + str(number))
-
 # mode1: 1 group send
 def new_value():
-    delay = entry_screen3.get()
-    delay = int(delay)
+    pyautogui.hotkey('alt', 'tab')
+    delay = 0.1
     string_val = entry_screen.get()
     repeats = entry_screen2.get()
     repeats = int(repeats)
     x = 0
-    pyautogui.hotkey('alt', 'tab')
     pyautogui.write(string_val)
     pyautogui.PAUSE = delay
     pyautogui.FAILSAFE = True
@@ -53,14 +44,13 @@ def new_value():
         x += 1
 # mode2: individual word send
 def new_value2():
-    delay = entry_screen3.get()
-    delay = int(delay)
+    pyautogui.hotkey('alt', 'tab')
+    delay = 0.1
     string_val = entry_screen.get()
     repeats = entry_screen2.get()
     repeats = int(repeats)
     lst_string_val = string_val.split()
     x = 0
-    pyautogui.hotkey('alt', 'tab')
     pyautogui.write(lst_string_val[0])
     pyautogui.PAUSE = delay
     pyautogui.FAILSAFE = True
@@ -71,14 +61,13 @@ def new_value2():
         x += 1
 #mode3: individual letter send
 def new_value3():
-    delay = entry_screen3.get()
-    delay = int(delay)
+    pyautogui.hotkey('alt', 'tab')
+    delay = 0.1
     string_val = entry_screen.get()
     repeats = entry_screen2.get()
     repeats = int(repeats)
     lst_string_val = list(string_val)
     x = 0
-    pyautogui.hotkey('alt', 'tab')
     pyautogui.write(lst_string_val[0])
     pyautogui.PAUSE = delay
     pyautogui.FAILSAFE = True
