@@ -11,13 +11,15 @@ MODE 1: Sends the whole sentence in repeat.
 MODE 2: Sends every word in the sentence in repeat.
   Ex:
     Input: I love you
-    Output: I
+    Output: 
+            I
             love
             you
 MODE 3: Sends every letter in the sentence in repeat.
   Ex:
     Input: I love you
-    Output: I
+    Output: 
+            I
       
             l
             o
